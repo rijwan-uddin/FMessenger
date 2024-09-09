@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/widgets/custom_input_fields.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -39,35 +40,41 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
   _pageTitle() {
     return Container(
       height: _deviceHeight * 0.10,
       child: Text(
         'MSN',
         style: TextStyle(
-            color: Colors.white,
-            fontSize: 40,
-            fontWeight: FontWeight.w600),
+            color: Colors.white, fontSize: 40, fontWeight: FontWeight.w600),
       ),
     );
   }
 
-  _loginForm(){
+  _loginForm() {
     return Container(
       height: _deviceHeight * 0.18,
       child: Form(
-        key: _loginFomKey,child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-
-        ],
-
-      ),
+        key: _loginFomKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CustomTextFormField(
+                onSaved: (_value) {},
+                regEx: r".{8,}",
+                hintText: 'Email',
+                obscureText: false),
+            CustomTextFormField(
+                onSaved: (_value) {},
+                regEx: r'^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]+$',
+                hintText: 'Password',
+                obscureText: true),
+          ],
+        ),
       ),
     );
   }
 }
-
-
