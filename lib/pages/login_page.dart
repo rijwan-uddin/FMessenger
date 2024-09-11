@@ -18,8 +18,14 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    _deviceHeight = MediaQuery.of(context).size.height;
-    _deviceWidth = MediaQuery.of(context).size.width;
+    _deviceHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
+    _deviceWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
     return _buildUI();
   }
 
@@ -40,6 +46,7 @@ class _LoginPageState extends State<LoginPage> {
             _loginForm(),
             SizedBox(height: _deviceHeight * 0.05,),
             _loginButton(),
+            SizedBox(height: _deviceHeight * 0.02,),
             registerAccounLink()
           ],
         ),
@@ -84,20 +91,23 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _loginButton(){
+  Widget _loginButton() {
     return RoundedButton(name: 'Login', height: _deviceHeight * 0.065,
-      width: _deviceWidth * 0.65, onPressed: (){},);
+      width: _deviceWidth * 0.65, onPressed: () {},);
   }
-  registerAccounLink() {
-    return Container(
-    child: Text("Don't have an account ?",
-    style: TextStyle(
-      color: Colors.lightBlueAccent,
-    ),),
-      )
 
+  registerAccounLink() {
+    return GestureDetector(
+      onTap: (){},
+      child: Container(
+        child: Text("Don't have an account ?",
+          style: TextStyle(
+            color: Colors.lightBlueAccent,
+          ),),
+      ),
+    );
   }
 
 }
 
- //25 2.0
+//25 2.0
