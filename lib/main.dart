@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'pages/splash_page.dart';
 import '../services/navigation.dart';
 import '../pages/login_page.dart';
-import 'package:messenger/auth_provider.dart';
+import 'package:messenger/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
