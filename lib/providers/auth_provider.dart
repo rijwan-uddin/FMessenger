@@ -20,7 +20,7 @@ class AuthnticationProvider extends ChangeNotifier{
       if (_user != null) {
 print('logged in');
       } else {
-        print('not logged in');
+
       }
     });
   }
