@@ -24,18 +24,11 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    _deviceHeight = MediaQuery
-        .of(context)
-        .size
-        .height;
-    _deviceWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
-     _auth = Provider.of<AuthnticationProvider>(context);
-     _navigation = GetIt.instance.get<NavigationService>();
+    _deviceHeight = MediaQuery.of(context).size.height;
+    _deviceWidth = MediaQuery.of(context).size.width;
+    _auth = Provider.of<AuthnticationProvider>(context);
+    _navigation = GetIt.instance.get<NavigationService>();
     return _buildUI();
-
   }
 
   Widget _buildUI() {
@@ -51,11 +44,17 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _pageTitle(),
-            SizedBox(height: _deviceHeight * 0.04,),
+            SizedBox(
+              height: _deviceHeight * 0.04,
+            ),
             _loginForm(),
-            SizedBox(height: _deviceHeight * 0.05,),
+            SizedBox(
+              height: _deviceHeight * 0.05,
+            ),
             _loginButton(),
-            SizedBox(height: _deviceHeight * 0.02,),
+            SizedBox(
+              height: _deviceHeight * 0.02,
+            ),
             registerAccounLink()
           ],
         ),
@@ -96,7 +95,6 @@ class _LoginPageState extends State<LoginPage> {
             CustomTextFormField(
                 onSaved: (_value) {
                   setState(() {
-
                     _password = _value;
                   });
                 },
@@ -115,24 +113,24 @@ class _LoginPageState extends State<LoginPage> {
       height: _deviceHeight * 0.065,
       width: _deviceWidth * 0.65,
       onPressed: () {
-        if (_loginFomKey.currentState!.validate()){
+        if (_loginFomKey.currentState!.validate()) {
           _loginFomKey.currentState!.save();
         }
-      },);
+      },
+    );
   }
 
   registerAccounLink() {
     return GestureDetector(
-      onTap: (){},
+      onTap: () {},
       child: Container(
-        child: Text("Don't have an account ?",
+        child: Text(
+          "Don't have an account ?",
           style: TextStyle(
             color: Colors.lightBlueAccent,
-          ),),
+          ),
+        ),
       ),
     );
   }
-
 }
-
-//25 2.0
