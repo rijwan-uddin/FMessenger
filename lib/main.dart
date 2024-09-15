@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/pages/homePage.dart';
 import 'pages/splash_page.dart';
 import '../services/navigation.dart';
 import '../pages/login_page.dart';
@@ -39,6 +40,7 @@ class MainApp extends StatelessWidget {
         initialRoute: '/login',
         routes: {
           '/login': (BuildContext _context) => LoginPage(),
+          '/home' : (BuildContext _context) => HomePage(),
         },
       ),
     );

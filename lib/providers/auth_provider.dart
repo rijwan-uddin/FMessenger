@@ -24,15 +24,20 @@ class AuthnticationProvider extends ChangeNotifier {
           (_snapshot) {
             Map<String, dynamic> _userData =
                 _snapshot.data()! as Map<String, dynamic>;
-            user = ChatUser.fromJson({
+            user = ChatUser.fromJson(
+              {
                 "uid": _user.uid,
-              "name": _userData["name"],
-              "last_active": _userData["last_active"],
-              "image": _userData["image"],
-            });
+                "name": _userData["name"],
+                "last_active": _userData["last_active"],
+                "image": _userData["image"],
+              },
+            );
+            _navigationService.removeAndNavigateToRoute('/home');
           },
         );
-      } else {}
+      } else {
+        _navigationService.removeAndNavigateToRoute('/login');
+      }
     });
   }
 
