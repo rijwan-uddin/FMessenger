@@ -5,7 +5,7 @@ import '../services/navigation.dart';
 import '../pages/login_page.dart';
 import 'package:messenger/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
-
+import '../pages/register.dart';
 void main() {
   runApp(SplashPage(
       key: UniqueKey(),
@@ -40,6 +40,7 @@ class MainApp extends StatelessWidget {
         initialRoute: '/login',
         routes: {
           '/login': (BuildContext _context) => LoginPage(),
+          '/register': (BuildContext _context) => RegisterPage(),
           '/home' : (BuildContext _context) => HomePage(),
         },
       ),

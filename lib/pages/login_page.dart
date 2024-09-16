@@ -5,6 +5,8 @@ import 'package:messenger/widgets/custom_input_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:get_it/get_it.dart';
 import '../widgets/rounded_button.dart';
+import 'package:messenger/main.dart';
+import 'package:messenger/pages/register.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -122,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
 
   registerAccounLink() {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => _navigation.removeAndNavigateToRoute('/register'),
       child: Container(
         child: Text(
           "Don't have an account ?",
