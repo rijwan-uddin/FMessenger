@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:messenger/services/media_service.dart';
 import 'package:provider/provider.dart';
+
+import '../widgets/rounded_image.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -13,6 +16,8 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   late double _deviceHeight;
   late double _deviceWidth;
+
+  PlatformFile? _profileImage;
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +39,33 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             _profileImageField(),
           ],
-
         ),
       ),
     );
   }
-  Widget _profileImageField(){
-    return //38
+
+  Widget _profileImageField() {
+    return GestureDetector(
+      onTap: () {
+        GetIt.instance.get<MediaService>().pickImageFromLibrary().then(
+          (_file) {
+            _profileImage = _file;
+          },
+        );
+      },
+      child: () {
+        if (_profileImage != null) {
+          return RoundedImageFile(
+            image: _profileImage!,
+            size: _deviceHeight * 0.15,
+          );
+        } else {
+          return RoundedImageNetwork(
+            imagePath: '',
+            size: _deviceHeight * 0.15,
+          );
+        }
+      }(),
+    );
   }
 }
