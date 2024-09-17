@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:provider/provider.dart';
+
 
 class RoundedImageNetwork extends StatelessWidget {
   final String imagePath;
