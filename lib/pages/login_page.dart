@@ -5,8 +5,7 @@ import 'package:messenger/widgets/custom_input_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:get_it/get_it.dart';
 import '../widgets/rounded_button.dart';
-import 'package:messenger/main.dart';
-import 'package:messenger/pages/register.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -18,7 +17,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   late double _deviceHeight;
   late double _deviceWidth;
-  late AuthnticationProvider _auth;
+  late AuthenticationProvider _auth;
   late NavigationService _navigation;
   final _loginFomKey = GlobalKey<FormState>();
   String? _email;
@@ -28,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-    _auth = Provider.of<AuthnticationProvider>(context);
+    _auth = Provider.of<AuthenticationProvider>(context);
     _navigation = GetIt.instance.get<NavigationService>();
     return _buildUI();
   }

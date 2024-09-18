@@ -22,9 +22,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthnticationProvider>(
+        ChangeNotifierProvider<AuthenticationProvider>(
           create: (BuildContext _context) {
-            return AuthnticationProvider(); // Ensure the instance is returned
+            return AuthenticationProvider(); // Ensure the instance is returned
           },
         )
       ],

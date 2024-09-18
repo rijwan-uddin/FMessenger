@@ -6,7 +6,7 @@ import 'package:messenger/services/navigation.dart';
 
 import '../models/chat_user.dart';
 
-class AuthnticationProvider extends ChangeNotifier {
+class AuthenticationProvider extends ChangeNotifier {
   late final FirebaseAuth _auth;
   late final NavigationService _navigationService;
   late final DatabaseService _databaseService;
@@ -48,6 +48,27 @@ class AuthnticationProvider extends ChangeNotifier {
           email: _email, password: _password);
     } on FirebaseAuthException {
       print('Error login into firebase');
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<String?> registerUserUsingEmailAndPassword(
+      String _email, String _password) async {
+    try {
+      UserCredential _credentials = await _auth.createUserWithEmailAndPassword(
+          email: _email, password: _password);
+      return _credentials.user!.uid;
+    } on FirebaseAuthException {
+      print('error register user');
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      await _auth.signOut();
     } catch (e) {
       print(e);
     }
