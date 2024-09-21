@@ -34,6 +34,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Messenger',
         theme: ThemeData(
             backgroundColor: Color.fromRGBO(246, 246, 246, 1.0),

@@ -151,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
       width: _deviceWidth * 0.65,
       onPressed: () async {
         if (_registerFormKey.currentState!.validate() && _profileImage != null){
-          
+
         }
       },
     );
