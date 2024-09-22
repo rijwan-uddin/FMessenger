@@ -4,23 +4,38 @@ const String USER_COLLECTION = "Users";
 const String CHAT_COLLECTION = "Chats";
 const String MESSAGES_COLLECTION = "Messages";
 
-class DatabaseService{
+class DatabaseService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  DatabaseService(){
+  DatabaseService() {}
 
+  Future<void> createUser(
+      String _uid, String _email, String _name, String _imageURL) async {
+    try {
+      await _db.collection(USER_COLLECTION).doc(_uid).set(
+        {
+          "email": _email,
+          "image": _imageURL,
+          "last_active": DateTime.now().toUtc(),
+          "name": _name,
+        },
+      );
+    } catch (e) {
+      print(e);
+    }
   }
-  Future<DocumentSnapshot> getUser(String _uid){
+
+  Future<DocumentSnapshot> getUser(String _uid) {
     return _db.collection(USER_COLLECTION).doc(_uid).get();
-
   }
+
   Future<void> updateUserLastSeentime(String _uid) async {
-    try{
+    try {
       await _db.collection(USER_COLLECTION).doc(_uid).update({
         "last_active": DateTime.now().toUtc(),
       });
-    } catch(e){
-print(e);
+    } catch (e) {
+      print(e);
     }
   }
 }

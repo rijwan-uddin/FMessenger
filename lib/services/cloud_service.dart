@@ -11,17 +11,31 @@ class CloudStorageService {
 
   CloudStorageService() {}
 
-  Future<String?> saveUserImageToStorage(String _uid, PlatformFile _file) async {
-    try{
-      Reference _ref = _storage.ref().child('images/users/$_uid/profile.${_file.extension}');
-      UploadTask _task = _ref.putFile(File(_file.path!),);
+  Future<String?> saveUserImageToStorage(
+      String _uid, PlatformFile _file) async {
+    try {
+      Reference _ref =
+          _storage.ref().child('images/users/$_uid/profile.${_file.extension}');
+      UploadTask _task = _ref.putFile(
+        File(_file.path!),
+      );
       return await _task.then((_result) => _result.ref.getDownloadURL());
-    } 
-
-    catch(e){
-print(e);
+    } catch (e) {
+      print(e);
     }
+  }
 
+  Future<String?> saveChatToStorage(
+      String _chatID, String _userID, PlatformFile _file) async {
+    try {
+      Reference _ref = _storage.ref().child(
+          'images/chats/$_chatID/${_userID} ${Timestamp.now().millisecondsSinceEpoch}${_file.extension}');
+      UploadTask _task = _ref.putFile(
+        File(_file.path!),
+      );
+      return await _task.then((_result) => _result.ref.getDownloadURL());
+    } catch (e) {
+      print(e);
+    }
   }
 }
-//44 1.24
